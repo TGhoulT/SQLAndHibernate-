@@ -1,10 +1,13 @@
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class LinkedPurchaseListId implements Serializable {
+public class LinkedPurchaseListId {
+    @Column(name = "student_id")
     private int studentId;
+    @Column(name = "course_id")
     private int courseId;
 
     public LinkedPurchaseListId() {}

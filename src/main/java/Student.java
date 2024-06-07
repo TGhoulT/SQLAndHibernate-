@@ -4,9 +4,9 @@ import java.util.Date;
 @Entity
 @Table(name = "students")
 public class Student {
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Id
     private String name;
     private int age;
     @Column(name = "registration_date")

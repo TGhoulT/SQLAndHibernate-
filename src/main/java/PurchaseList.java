@@ -5,78 +5,31 @@ import java.util.Date;
 @Entity
 @Table(name = "purchaselist")
 public class PurchaseList {
-    @Id
-    @Column(name = "student_name")
-    private String studentName;
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private Student student;
+    @EmbeddedId
+    private PurchaseListId purchaseListId;
 
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @Column(name = "course_name")
-//    private Course course;
-    @Column(name = "course_name")
-    private String courseName;
-    private int price;
+    public PurchaseList() {}
 
-    @Column(name = "subscription_date")
-    private Date subscriptionDate;
-
-//    public Student getStudent() {
-//        return student;
-//    }
-//
-//    public void setStudent(Student student) {
-//        this.student = student;
-//    }
-
-//    public Course getCourse() {
-//        return course;
-//    }
-//
-//    public void setCourse(Course course) {
-//        this.course = course;
-//    }
-
-
-    public String getStudentName() {
-        return studentName;
+    public PurchaseList(PurchaseListId purchaseListId) {
+        this.purchaseListId = purchaseListId;
     }
 
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
+    public PurchaseList(LinkedPurchaseListId purchaseListId) {
     }
 
-    public String getCourseName() {
-        return courseName;
+    public PurchaseListId getPurchaseListId() {
+        return purchaseListId;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public void setPurchaseListId(PurchaseListId purchaseListId) {
+        this.purchaseListId = purchaseListId;
     }
 
-    public int getPrice() {
-        return price;
+    @Override
+    public String toString() {
+        return "PurchaseList{" +
+                "studentName=" + purchaseListId.getStudentName() +
+                ", courseName=" + purchaseListId.getCourseName() +
+                '}';
     }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public Date getSubscriptionDate() {
-        return subscriptionDate;
-    }
-
-    public void setSubscriptionDate(Date subscriptionDate) {
-        this.subscriptionDate = subscriptionDate;
-    }
-
-//    @Override
-//    public String toString() {
-//        return "PurchaseList{" +
-//                "student=" + student +
-//                ", course=" + course +
-//                ", price=" + price +
-//                ", subscriptionDate=" + subscriptionDate +
-//                '}';
-//    }
 }
